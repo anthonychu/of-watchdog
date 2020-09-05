@@ -62,12 +62,12 @@ func main() {
 	http.HandleFunc("/", metrics.InstrumentHandler(requestHandler, httpMetrics))
 	http.HandleFunc("/_/health", makeHealthHandler())
 
-	metricsServer := metrics.MetricsServer{}
-	metricsServer.Register(watchdogConfig.MetricsPort)
+	// metricsServer := metrics.MetricsServer{}
+	// metricsServer.Register(watchdogConfig.MetricsPort)
 
-	cancel := make(chan bool)
+	// cancel := make(chan bool)
 
-	go metricsServer.Serve(cancel)
+	// go metricsServer.Serve(cancel)
 
 	shutdownTimeout := watchdogConfig.HTTPWriteTimeout
 	s := &http.Server{
